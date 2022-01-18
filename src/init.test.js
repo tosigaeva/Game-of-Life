@@ -16,6 +16,18 @@ test('0xm is []', () => {
     expect(init(0, 3, 10)).toStrictEqual([]);
 });
 
+test('3x0 is 0 active [{active: false}, {active: false}, {active: false}]', () => {
+    expect(init(3, 0, 0)).toStrictEqual([{active: false}, {active: false}, {active: false}]);
+});
+
+test('3x0 is 3 active [{active: true}, {active: true}, {active: true}]', () => {
+    expect(init(3, 0, 3)).toStrictEqual([{active: true}, {active: true}, {active: true}]);
+});
+
+test('3x0 is 2 active', () => {
+    expect(init(3, 0, 2).reduce((a, b) => b.active ? ++a : a, 0), 2);
+});
+
 test('3x0 is [1, 1, 1]', () => {
     expect(init(3, 0)).toStrictEqual([1, 1, 1]);
 });

@@ -1,4 +1,4 @@
-# untitled1
+# game_life
 
 ## Project setup
 ```

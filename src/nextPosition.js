@@ -1,6 +1,14 @@
 function newPostition(currentStatus, countOfNeighbors) {
 
-    return !currentStatus || countOfNeighbors === 3 ||countOfNeighbors === 2;
+    if (!currentStatus && countOfNeighbors === 3) {
+        return true;
+    }
+
+    if (!currentStatus && countOfNeighbors !== 3) {
+        return false;
+    }
+
+    return countOfNeighbors === 3 || countOfNeighbors === 2
 
 }
 

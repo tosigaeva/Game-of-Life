@@ -1,5 +1,7 @@
 const countNeighbors = require('./countNeighbors')
 
-test('in 3x3 arrray, the cell has 8 neighbors ', () => {
-    expect(countNeighbors(3, 3)).toBe(8);
+const myArray = [[false, true, false], [true, true, false], [false, false, true]];
+
+test('in the myArray, element [1][1] has 6 neighbors', () => {
+    expect(countNeighbors(myArray)).toEqual([[4, 3, 4], [3, 3, 4], [4, 4, 3]]);
 });

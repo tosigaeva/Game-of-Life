@@ -1,7 +1,11 @@
 const countNeighbors = require('./countNeighbors')
 
-const myArray = [[false, true, false], [true, true, false], [false, false, true]];
+test('check new array', () => {
+    const myArray = [[false, true, false], [true, true, false], [false, false, true]];
+    expect(countNeighbors(myArray)).toEqual([[false, true, false], [true, true, false], [false, false, true]]);
+});
 
-test('in the myArray, element [1][1] has 6 neighbors', () => {
-    expect(countNeighbors(myArray)).toEqual([[4, 3, 4], [3, 3, 4], [4, 4, 3]]);
+test('check new array', () => {
+    const  myArray = [[false, false, false], [false, true, false], [false, false, false]];
+    expect(countNeighbors(myArray)).toEqual([[true, true, true], [true, true, true], [true, true, true]]);
 });

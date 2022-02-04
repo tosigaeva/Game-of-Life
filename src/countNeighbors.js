@@ -1,4 +1,4 @@
-//const newPosition = require('./nextPosition');
+const nextPosition = require('./nextPosition');
 
 function countNeighbors(arr) {
     let newArray = [];
@@ -21,10 +21,7 @@ function countNeighbors(arr) {
             if (arr[fp(i, n) + 1][fm(j, m) - 1] === true) neighbors++; //check bottom-left
             if (arr[fm(i, n) - 1][fm(j, m) - 1] === true) neighbors++; //check top-left
 
-            newArray[i][j] = neighbors;
-
-            /*call the function newPostition(currentStatus, countOfNeighbors)
-            newArray[i][j] = newPostition(arr[i][j], neighbors); */
+            newArray[i][j] = nextPosition(arr[i][j], neighbors);
         }
     }
 

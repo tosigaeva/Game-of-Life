@@ -1,4 +1,4 @@
-function newPostition(currentStatus, countOfNeighbors) {
+function newStatus(currentStatus, countOfNeighbors) {
 
     if (!currentStatus && countOfNeighbors === 3) {
         return true;
@@ -12,4 +12,4 @@ function newPostition(currentStatus, countOfNeighbors) {
 
 }
 
-module.exports = newPostition
+module.exports = newStatus

@@ -32,7 +32,7 @@ export default {
   name: 'HelloWorld',
   data: function () {
     return {
-      // interval: null,
+      interval: null,
       initBoard: initBoard()
     };
   },
@@ -41,7 +41,7 @@ export default {
       let initBoard = this.initBoard;
       this.initBoard = countNeighbors(this.initBoard);
       if (initBoard.toStrictEqual(this.initBoard)) {
-        // this.initBoard = initBoard();
+        this.initBoard = initBoard();
       }
     }, 3000);
   }

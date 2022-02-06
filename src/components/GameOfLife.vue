@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <table class="center">
-      <tr v-for="row in initBoard" :key="row.id">
+      <tr v-for="row in board" :key="row.id">
         <td v-for="cell in row" :key="cell.id" class="cell" v-bind:class="{ active: cell }">o</td>
       </tr>
     </table>
@@ -24,7 +24,6 @@ let initBoard = function () {
     }
   }
 
-  console.log(board, flatBoard);
   return flatBoard;
 };
 
@@ -33,15 +32,15 @@ export default {
   data: function () {
     return {
       interval: null,
-      initBoard: initBoard()
+      board: initBoard()
     };
   },
   mounted() {
     this.interval = setInterval(() => {
-      let initBoard = this.initBoard;
-      this.initBoard = countNeighbors(this.initBoard);
-      if (initBoard.toStrictEqual(this.initBoard)) {
-        this.initBoard = initBoard();
+      let prevBoard = this.board;
+      this.board = countNeighbors(this.board);
+      if (prevBoard.toStrictEqual(this.board)) {
+        this.board = initBoard();
       }
     }, 3000);
   }

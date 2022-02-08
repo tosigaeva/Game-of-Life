@@ -10,7 +10,7 @@
 
 <script>
 
-import countNeighbors from '../countNeighbors'
+import generateBoard from '../generateBoard'
 import init from '../init'
 
 let initBoard = function () {
@@ -38,7 +38,7 @@ export default {
   mounted() {
     this.interval = setInterval(() => {
       let prevBoard = this.board;
-      this.board = countNeighbors(this.board);
+      this.board = generateBoard(this.board);
       if (prevBoard.toStrictEqual(this.board)) {
         this.board = initBoard();
       }

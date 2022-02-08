@@ -1,4 +1,4 @@
-const countNeighbors = require('./countNeighbors')
+const countNeighbors = require('./generateBoard')
 
 test('1', () => {
     const myArray = [

@@ -1,4 +1,4 @@
-# game_life
+# Game of Life
 
 ## Project setup
 ```

@@ -1,45 +1,45 @@
-const countNeighbors = require('./generateBoard')
+const generateBoard = require('./generateBoard')
 
 test('1', () => {
-    const myArray = [
+    const currentBoard = [
         [false, true, false],
         [true, true, false],
         [false, false, true]];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [false, true, false],
         [true, true, false],
         [false, false, true]]);
 });
 
 test('2', () => {
-    const  myArray = [
+    const  currentBoard = [
         [true, false, false],
         [false, true, false],
         [false, false, true]];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [true, true, true],
         [true, true, true],
         [true, true, true]]);
 });
 
 test('3', () => {
-    const  myArray = [
+    const  currentBoard = [
         [false, false, false],
         [false, true, false],
         [false, false, false]];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [false, false, false],
         [false, false, false],
         [false, false, false]]);
 });
 
 test('4', () => {
-    const  myArray = [
+    const  currentBoard = [
         [false, false, false],
         [false, true, false],
         [false, false, false],
         [false, true, false]];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [false, false, false],
         [false, false, false],
         [false, false, false],
@@ -47,21 +47,21 @@ test('4', () => {
 });
 
 test('4', () => {
-    const  myArray = [
+    const  currentBoard = [
         [false, false],
         [false, true]
     ];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [false, false],
         [false, false]
     ]);
 });
 
 test('5', () => {
-    const  myArray = [
+    const  currentBoard = [
         [false]
     ];
-    expect(countNeighbors(myArray)).toEqual([
+    expect(generateBoard(currentBoard)).toEqual([
         [false]
     ]);
 });

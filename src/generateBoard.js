@@ -2,24 +2,21 @@ const newStatus = require('./newStatus');
 
 function generateBoard(currentBoard) {
     let newBoard = [];
-    let wigthBoard = currentBoard.length;
 
-    for (let i = 0; i < wigthBoard; i++) {
+    for (let i = 0; i < currentBoard.length; i++) {
         newBoard[i] = [];
-        let lengthBoard = currentBoard[i].length;
 
-        for (let j = 0; j < lengthBoard; j++) {
+        for (let j = 0; j < currentBoard[i].length; j++) {
             let neighbors = 0;
 
-            if (currentBoard[fm(i, wigthBoard) - 1][j] === true) neighbors++; //check top
-            if (currentBoard[i][j + 1 === lengthBoard ? 0 : j + 1] === true) neighbors++; //check right
-            if (currentBoard[fp(i, wigthBoard) + 1][j] === true) neighbors++; //check bottom
-            if (currentBoard[i][fm(j, lengthBoard) - 1] === true) neighbors++; //check left
-            //add a diagonal check
-            if (currentBoard[fm(i, wigthBoard) - 1][fp(j, lengthBoard) + 1] === true) neighbors++; //check top-right
-            if (currentBoard[fp(i, wigthBoard) + 1][fp(j, lengthBoard) + 1] === true) neighbors++; //check bottom-right
-            if (currentBoard[fp(i, wigthBoard) + 1][fm(j, lengthBoard) - 1] === true) neighbors++; //check bottom-left
-            if (currentBoard[fm(i, wigthBoard) - 1][fm(j, lengthBoard) - 1] === true) neighbors++; //check top-left
+            if(isNeighborFromTopFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromTopRigthFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromRigthFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromBottomRigthFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromBottomFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromBottomLeftFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromLeftFound(currentBoard, i, j)) {neighbors++;}
+            if(isNeighborFromTopLeftFound(currentBoard, i, j)) {neighbors++;}
 
             newBoard[i][j] = newStatus(currentBoard[i][j], neighbors);
         }
@@ -28,16 +25,56 @@ function generateBoard(currentBoard) {
     return newBoard;
 }
 
-function fm(i, wigthBoard) {
-     if (i === 0) return wigthBoard;
+function isNeighborFromTopFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === 0 ? board.length -1 : rowIndex - 1;
 
-     return i;
+    return board[rowIndex][columnIndex];
 }
 
-function fp(i, wigthBoard) {
-    if (i === wigthBoard - 1) return -1;
+function isNeighborFromTopRigthFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === 0 ? board.length -1 : rowIndex - 1;
+    columnIndex = columnIndex === board[rowIndex].length - 1 ? 0 : columnIndex + 1;
 
-    return i;
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromRigthFound(board, rowIndex, columnIndex) {
+    columnIndex = columnIndex === board[rowIndex].length - 1 ? 0 : columnIndex + 1;
+
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromBottomRigthFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === board.length - 1 ? 0 : rowIndex + 1;
+    columnIndex = columnIndex === board[rowIndex].length - 1 ? 0 : columnIndex + 1;
+
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromBottomFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === board.length -1 ? 0 : rowIndex + 1;
+
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromBottomLeftFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === board.length -1 ? 0 : rowIndex + 1;
+    columnIndex = columnIndex === 0 ? board[rowIndex].length - 1 : columnIndex - 1;
+
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromLeftFound(board, rowIndex, columnIndex) {
+    columnIndex = columnIndex === 0 ? board[rowIndex].length - 1 : columnIndex - 1;
+
+    return board[rowIndex][columnIndex];
+}
+
+function isNeighborFromTopLeftFound(board, rowIndex, columnIndex) {
+    rowIndex = rowIndex === 0 ? board.length -1 : rowIndex - 1;
+    columnIndex = columnIndex === 0 ? board[rowIndex].length - 1 : columnIndex - 1;
+
+    return board[rowIndex][columnIndex];
 }
 
 module.exports = generateBoard
